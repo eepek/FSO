@@ -1,5 +1,14 @@
 import { useState } from 'react'
 
+const Mostvoted = (props) => {
+  return (
+    <>
+      <h1>most voted anecdote</h1>
+      <p>{props.anecdote}</p>
+    </>
+  )
+}
+
 
 const App = () => {
   const anecdotes = [
@@ -12,27 +21,36 @@ const App = () => {
     'Programming without an extremely heavy use of console.log is same as if a doctor would refuse to use x-rays or blood tests when dianosing patients.',
     'The only way to go fast, is to go well.'
   ]
-  const votes = {0: 0, 1: 0, 2: 0, 3: 0, 4:0, 5:0, 6:0, 7:0 }
-   
+  const [vote, setVote] = useState(Array(anecdotes.length).fill(0))
   const [selected, setSelected] = useState(0)
   
   const handleClick = () => {
     let number = Math.floor(Math.random()*(anecdotes.length))
+    while (number === selected) {
+      number = Math.floor(Math.random()*(anecdotes.length))
+    }
     setSelected(number)
-    const votes_updated = {...votes}
-    votes_updated[number] += 1
   }
   
-
+  const voteClick = (number) => {
+    const votes_updated = [...vote]
+    votes_updated[number] += 1
+    setVote(votes_updated)
+    handleClick()
+  }
+  console.log(vote)
   return (
     <>
+    <h1>anecdote of the day</h1>
     <div>
       {anecdotes[selected]}
     </div>
+    <p>has {vote[selected]} votes</p>
+    
+    <button onClick={() => voteClick(selected)}>Vote</button>
     <button onClick={handleClick}>Next anecdote</button>
-    <div>
-
-    </div>
+    <br></br>
+    <Mostvoted anecdote={anecdotes[vote.indexOf(Math.max(...vote))]} />
     </>
   )
 }
