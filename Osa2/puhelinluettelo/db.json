@@ -1,0 +1,34 @@
+{
+  "persons": [
+    {
+      "name": "Arto Hellas",
+      "number": "040-123456",
+      "id": 1
+    },
+    {
+      "name": "Dan Abramov",
+      "number": "12-43-234345",
+      "id": 3
+    },
+    {
+      "name": "iretaoj",
+      "number": "3459604",
+      "id": 8
+    },
+    {
+      "name": "uusiii",
+      "number": "23543",
+      "id": 12
+    },
+    {
+      "name": "uusih",
+      "number": "69",
+      "id": 13
+    },
+    {
+      "name": "timo tolkki",
+      "number": "123254",
+      "id": 15
+    }
+  ]
+}
